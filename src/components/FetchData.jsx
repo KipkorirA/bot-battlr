@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function FetchData({onSelectBot}) {
+function FetchData({onSelectBot, selectedBots}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -30,10 +30,13 @@ function FetchData({onSelectBot}) {
   if (error) return <div className="text-center text-red-500">Error: {error.message}</div>;
 
   return (
-    <div className="p-10 max-w-2xl max-h-full bg-white">
+    <div className="p-10 max-w-2xl max-h-full bg-white ">
       <h1 className="text-2xl text-black font-bold mb-4">Fetched Data:</h1>
-      <ul className="space-y-4">
-      {data.map((bot) => (
+      <ul className="flex flex-wrap space-y-4">
+      {data.map((bot) => {
+        const isSelected = selectedBots.some(selectedBot => selectedBot.id === bot.id);
+          return(
+
           <li key={bot.id} className="border rounded-lg p-4 shadow-md">
             <div >
               <h2 className="text-xl text-black font-semibold mb-2">{bot.name}</h2>
@@ -41,13 +44,15 @@ function FetchData({onSelectBot}) {
               <p className="text-gray-700">Damage: <span className="font-medium"></span>{bot.damage}</p>
               <p className="text-gray-700">Armor: <span className="font-medium"></span>{bot.armor}</p>
               <button 
-                className="mt-2 bg-blue-500 text-white py-1 px-4 rounded"
-                onClick={() => onSelectBot(bot)}>
-                Enlist
+                className={"mt-2 py-1 px-4 rounded bg-red-600 ${isSelected ? 'bg-gray-500' : 'bg-blue-500 text-white'}"}
+                onClick={() => onSelectBot(bot)}
+                disabled={isSelected}>
+                 {isSelected ? 'Enlisted' : 'Enlist'}
               </button>
             </div>
           </li>
-        ))}
+      );
+        })}
       </ul>
     </div>
   );
