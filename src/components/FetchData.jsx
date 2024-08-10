@@ -16,7 +16,8 @@ function FetchData() {
         }
         return response.json();
       })
-      .then((data) => {setData(data);
+      .then((data) => {
+        setData(data);
         setLoading(false);
       })
       .catch((error) => {
@@ -32,8 +33,15 @@ function FetchData() {
     <div>
       <h1>Fetched Data:</h1>
       <ul>
-        {data && data.map((item) => (
-          <li key={item.id}>{item.title}</li>
+      {data.map((bot) => (
+          <li key={bot.id}>
+            <div >
+              <h2>{bot.name}</h2>
+              <p>Health: {bot.health}</p>
+              <p>Damage: {bot.damage}</p>
+              <p>Armor: {bot.armor}</p>
+            </div>
+          </li>
         ))}
       </ul>
     </div>
