@@ -3,9 +3,12 @@ import FetchData from './components/FetchData'
 function App() {
  
   return (
-    <div className="App">
+    <div >
+       <div >
       <FetchData />
     </div>
+    </div>
+   
   )
 }
 
