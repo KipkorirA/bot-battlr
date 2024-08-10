@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function FetchData() {
+function FetchData(onSelectBot) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -40,6 +40,11 @@ function FetchData() {
               <p className="text-gray-700">Health: <span className="font-medium"></span>{bot.health}</p>
               <p className="text-gray-700">Damage: <span className="font-medium"></span>{bot.damage}</p>
               <p className="text-gray-700">Armor: <span className="font-medium"></span>{bot.armor}</p>
+              <button 
+                className="mt-2 bg-blue-500 text-white py-1 px-4 rounded"
+                onClick={() => onSelectBot(bot)}>
+                Enlist
+              </button>
             </div>
           </li>
         ))}
