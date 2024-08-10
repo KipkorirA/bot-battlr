@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import SearchBar from './SearchBar';
 
 function FetchData({onSelectBot, selectedBots}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     
@@ -29,11 +31,16 @@ function FetchData({onSelectBot, selectedBots}) {
   if (loading) return <div className="text-center text-gray-500">Loading...</div>;
   if (error) return <div className="text-center text-red-500">Error: {error.message}</div>;
 
+  const filteredData = data.filter(bot =>
+    bot.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="p-10 max-w-2xl max-h-full bg-white ">
       <h1 className="text-2xl text-black font-bold mb-4">Fetched Data:</h1>
+      <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       <ul className="flex flex-wrap space-y-4">
-      {data.map((bot) => {
+      {filteredData.map((bot) => {
         const isSelected = selectedBots.some(selectedBot => selectedBot.id === bot.id);
           return(
 
