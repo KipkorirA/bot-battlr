@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-function FetchData(onSelectBot) {
+function FetchData({onSelectBot}) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     
-    const url = 'http://localhost:3000/bots';
+    const url = 'https://bot-deploy-link.vercel.app/bots';
 
     fetch(url)
       .then((response) => {
