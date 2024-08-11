@@ -1,12 +1,12 @@
 
-function SearchBar({ searchTerm, onSearchChange }) {
+function SearchBar({ searchQuery, setSearchQuery}) {
   return (
     <input
       type="text"
       placeholder="Search bots..."
-      value={searchTerm}
-      onChange={(e) => onSearchChange(e.target.value)}
-      className="mb-4 p-2 border rounded"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      className="mb-2 mt-2 p-4 border rounded"
     />
   );
 }
