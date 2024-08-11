@@ -49,23 +49,30 @@ function App() {
   };
 
   return (
-    <div className="App min-h-screen bg-gray-100 flex  items-center">
+    <div  className="bg-cover"
+    style={{
+      backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3V4KO-c_FFOAk72w26u3KXq0zSx4eKJTz2A&s')"
+    }}>
        
-       <ViewSwitcher currentView={view} onChangeView={handleViewChange} />
-        
+       <ViewSwitcher  currentView={view} onChangeView={handleViewChange} />
+       
         {view === 'bots' && (
-          <>
+          <div className="flex justify-center mt-4">  
           <button
             onClick={toggleBots}
-            className="mb-4 p-2 border rounded bg-blue-500 text-white"
+            className="mb- p-2 border rounded bg-red-500 text-white"
           >
             {showBots ? 'Hide Bots' : 'Show Bots'}
-          </button>
-      {showBots && (   
-       <div className="w-full max-w-4xl flex">
-        <div className="w-2/3 pl-4">
+          </button>      
+      </div>
+        )}
+      {view === 'bots' && showBots && (   
+       <div className="flex flex-col items-center mt-4">
+        <div className="flex flex-wrap justify-center w-full max-w-4xl">
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <SortBar sortBy={sortBy} setSortBy={setSortBy} />
+        </div>
+        <div className="w-full mt-4">
         {viewBot ? (
           <BotSpecs bot={viewBot} onEnlist={handleSelectBot} onBack={handleBack} />
         ) : (
@@ -80,25 +87,29 @@ function App() {
        </div>
        </div>
       )}
-       </>
-      )}
+       
+      
       
       {view === 'army' && (
-        <>
+        <div className="flex justify-center mt-4">
           <button
             onClick={toggleArmy}
-            className="mb-4 p-2 border rounded bg-blue-500 text-white"
+            className="p-2 border rounded bg-blue-500 text-white"
           >
             {showArmy ? 'Hide Army' : 'Show Army'}
           </button>
-          {showArmy && (
-            <div className="w-full max-w-4xl flex">
+          </div>
+      )}
+
+          {view === 'army' && showArmy && (
+            <div className="flex justify-center mt-4">
+              <div className="w-full ">
               <BotArmy selectedBots={selectedBots} onReleaseBot={handleReleaseBot} />
             </div>
+            </div>
           )}
-        </>
-      )}
-    </div>
+        </div>
+    
   );
 }
 export default App

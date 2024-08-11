@@ -6,7 +6,7 @@ function SearchBar({ searchQuery, setSearchQuery}) {
       placeholder="Search bots..."
       value={searchQuery}
       onChange={(e) => setSearchQuery(e.target.value)}
-      className="mb-2 mt-2 p-4 border rounded"
+      className="mb-2 mt-2 p-3 m-5 border rounded"
     />
   );
 }

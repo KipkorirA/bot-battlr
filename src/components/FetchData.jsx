@@ -39,7 +39,7 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
   }
 
   return (
-    <div className="p-1  max-h-full bg-yellow-100 ">
+    <div className="bg-yellow-100 ">
       <h1 className="text-2xl text-yellow-200 font-bold mb-4 text-center bg-black">Fetched Data:</h1>
       {filteredData.length === 0 ? (
         <p className="text-center text-gray-600">No results found.</p>

@@ -6,7 +6,7 @@ function SortBar({ sortBy, setSortBy }) {
         <select 
           value={sortBy} 
           onChange={(e) => setSortBy(e.target.value)} 
-          className="p-2 border rounded"
+          className="p-3 border rounded"
         >
           <option value="health">Health</option>
           <option value="damage">Damage</option>

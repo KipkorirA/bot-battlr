@@ -2,9 +2,9 @@
 
 function BotArmy({ selectedBots, onReleaseBot }) {
   return (
-    <div className="flex flex-wrap space-y-4 space-x-4 items-start p-1 bg-gray-200 rounded-lg ">
+    <div className="flex flex-wrap space-y-4 space-x-4 items-start p-1  rounded-lg ">
          {selectedBots.length === 0 ? (
-        <p className="text-center text-gray-600 w-full">No bots selected.</p>
+        <p className="text-center text-gray-600 ">No bots selected.</p>
       ) : (
         selectedBots.map((bot) => (
           <div 
