@@ -14,14 +14,12 @@ function BotArmy({ selectedBots, onReleaseBot }) {
           >
       <h2 className="text-2xl font-bold text-black mb-4">Your Bot Army</h2>
       <p className="text-gray-700">Health: <span className="font-medium">{bot.health}</span></p>
-            <p className="text-gray-700">Damage: <span className="font-medium">{bot.damage}</span></p>
-            <p className="text-gray-700">Armor: <span className="font-medium">{bot.armor}</span></p>
-            <button 
-              className="mt-2 py-1 px-4 rounded bg-red-600 text-white"
-              onClick={() => onReleaseBot(bot.id)}
-            >
-              Release
-            </button>
+      <p className="text-gray-700">Damage: <span className="font-medium">{bot.damage}</span></p>
+      <p className="text-gray-700">Armor: <span className="font-medium">{bot.armor}</span></p>
+       <button className="mt-2 py-1 px-4 rounded bg-red-600 text-white"
+               onClick={() => onReleaseBot(bot.id)}
+       >Release
+      </button>
           </div>
         ))
       )}

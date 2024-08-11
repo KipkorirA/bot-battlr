@@ -35,7 +35,7 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
   .sort((a, b) => b[sortBy] - a[sortBy])
 
   const handleViewClick = (botId) => {
-    setExpandedBotId(expandedBotId === botId ? null : botId); // Toggle expanded state
+    setExpandedBotId(expandedBotId === botId ? null : botId); 
   }
 
   return (
@@ -71,6 +71,10 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
                     <p className="text-gray-700">Health: {bot.health}</p>
                     <p className="text-gray-700">Damage: {bot.damage}</p>
                     <p className="text-gray-700">Armor: {bot.armor}</p>
+                    <p className="text-gray-700">Class: {bot.bot_class}</p>
+                    <p className="text-gray-700">Catchphrase: {bot.catchphrase}</p>
+                    <p className="text-gray-700">Created At: {new Date(bot.created_at).toLocaleDateString()}</p>
+                    <p className="text-gray-700">Updated At: {new Date(bot.updated_at).toLocaleDateString()}</p>
                   </div>
                 )}
           </li>
