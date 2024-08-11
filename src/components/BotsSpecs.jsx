@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FetchData from './FetchData';
 
 function BotSpecs({ bot, onEnlist, onBack }) {
   const [enlisting, setEnlisting] = useState(false);
@@ -9,9 +10,10 @@ function BotSpecs({ bot, onEnlist, onBack }) {
   };
 
   return (
-    <div className="p-4 border flex flex-col rounded-lg shadow-md bg-yellow-100">
-      <h2 className="text-3xl font-bold mb-4">{bot.name}</h2>
+    <div className="p-4 m-10 border flex w-80 flex-row rounded-lg shadow-md bg-yellow-100">
       <img src={bot.avatar_url} alt={bot.name} className="w-48 h-48 mb-4" />
+      <div>
+      <h2 className="text-3xl font-bold mb-4">{bot.name}</h2>
       <p className="text-gray-700">Health: {bot.health}</p>
       <p className="text-gray-700">Damage: {bot.damage}</p>
       <p className="text-gray-700">Armor: {bot.armor}</p>
@@ -25,7 +27,7 @@ function BotSpecs({ bot, onEnlist, onBack }) {
         {enlisting ? 'Enlisted' : 'Enlist'}
       </button>
       </div>
-      
+      </div>      
     </div>
   );
 }

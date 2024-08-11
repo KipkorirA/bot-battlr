@@ -4,6 +4,7 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedBotId, setExpandedBotId] = useState(null)
 
   useEffect(() => {
     
@@ -33,6 +34,10 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
   .filter(bot =>bot.name.toLowerCase().includes(searchQuery.toLowerCase()))
   .sort((a, b) => b[sortBy] - a[sortBy])
 
+  const handleViewClick = (botId) => {
+    setExpandedBotId(expandedBotId === botId ? null : botId); // Toggle expanded state
+  }
+
   return (
     <div className="p-1  max-h-full bg-yellow-100 ">
       <h1 className="text-2xl text-yellow-200 font-bold mb-4 text-center bg-black">Fetched Data:</h1>
@@ -42,6 +47,7 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
       <ul className="flex flex-wrap space-y-4 space-x-4">
       {filteredData.map((bot) => {
         const isSelected = selectedBots.some(selectedBot => selectedBot.id === bot.id);
+            const isExpanded = expandedBotId === bot.id
           return(
 
           <li key={bot.id} className="border rounded-lg p-4 shadow-md">
@@ -55,12 +61,18 @@ function FetchData({onSelectBot, selectedBots, searchQuery, sortBy, onViewBot}) 
                  {isSelected ? 'Enlisted' : 'Enlist'}
               </button>
               <button 
-                onClick={() => onViewBot(bot)}
-                className="py-1 px-4 rounded bg-green-500 text-white"
+              onClick={() => handleViewClick(bot.id)}
+              className="py-1 px-4 rounded bg-green-500 text-white"
               >
-                View
+                {isExpanded ? 'Hide Details' : 'View'}
               </button>
-            
+              {isExpanded && ( 
+                  <div className="mt-2">
+                    <p className="text-gray-700">Health: {bot.health}</p>
+                    <p className="text-gray-700">Damage: {bot.damage}</p>
+                    <p className="text-gray-700">Armor: {bot.armor}</p>
+                  </div>
+                )}
           </li>
       );
         })}
