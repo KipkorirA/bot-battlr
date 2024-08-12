@@ -44,7 +44,7 @@ This React app allows users to manage bots, view their details, enlist them, and
 
 4. Start the development server:
     ```bash
-    npm start
+    npm run dev
     ```
 
 5. Open the application in your browser at `http://localhost:3000`.
